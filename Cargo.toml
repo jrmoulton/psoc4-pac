@@ -1,0 +1,17 @@
+[package]
+authors = ["Jared Moulton <jaredmoulton3@gmail.com>"]
+edition = "2021"
+readme = "README.md"
+name = "psoc4-pac"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.7"
+vcell = "0.1.2"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.6.13"
+
+[features]
+rt = ["cortex-m-rt/device"]
