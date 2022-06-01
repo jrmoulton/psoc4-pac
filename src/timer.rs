@@ -1,16 +1,16 @@
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved0: [u8; 0x4020_01c8],
-    #[doc = "0x402001c8 - Current counter value"]
+    _reserved0: [u8; 0x4020_0148],
+    #[doc = "0x40200148 - Current counter value"]
     pub counter: crate::Reg<counter::COUNTER_SPEC>,
-    #[doc = "0x402001cc - Compare / capture value"]
+    #[doc = "0x4020014c - Compare / capture value"]
     pub cc: crate::Reg<cc::CC_SPEC>,
-    #[doc = "0x402001d0 - Compare / capture buffer value"]
+    #[doc = "0x40200150 - Compare / capture buffer value"]
     pub cc_buf: crate::Reg<cc_buf::CC_BUF_SPEC>,
-    #[doc = "0x402001d4 - Period value"]
+    #[doc = "0x40200154 - Period value"]
     pub period: crate::Reg<period::PERIOD_SPEC>,
-    #[doc = "0x402001d8 - Period buffer value"]
+    #[doc = "0x40200158 - Period buffer value"]
     pub period_buf: crate::Reg<period_buf::PERIOD_BUF_SPEC>,
 }
 #[doc = "COUNTER register accessor: an alias for `Reg<COUNTER_SPEC>`"]

@@ -51,6 +51,146 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
         match self {}
     }
 }
+#[doc = "Low Power Comparator"]
+pub struct COMP_0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for COMP_0 {}
+impl COMP_0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const comp_0::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const comp_0::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for COMP_0 {
+    type Target = comp_0::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for COMP_0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("COMP_0").finish()
+    }
+}
+#[doc = "Low Power Comparator"]
+pub mod comp_0;
+#[doc = "Sequencing SAR ADC"]
+pub struct ADC {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for ADC {}
+impl ADC {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const adc::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const adc::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for ADC {
+    type Target = adc::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for ADC {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("ADC").finish()
+    }
+}
+#[doc = "Sequencing SAR ADC"]
+pub mod adc;
+#[doc = "Low Power Comparator"]
+pub struct COMP_1 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for COMP_1 {}
+impl COMP_1 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const comp_1::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const comp_1::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for COMP_1 {
+    type Target = comp_1::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for COMP_1 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("COMP_1").finish()
+    }
+}
+#[doc = "Low Power Comparator"]
+pub mod comp_1;
+#[doc = "IDAC"]
+pub struct CAPSENSE_IDAC1 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for CAPSENSE_IDAC1 {}
+impl CAPSENSE_IDAC1 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const cap_sense_idac1::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const cap_sense_idac1::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for CAPSENSE_IDAC1 {
+    type Target = cap_sense_idac1::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for CAPSENSE_IDAC1 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("CAPSENSE_IDAC1").finish()
+    }
+}
+#[doc = "IDAC"]
+pub mod cap_sense_idac1;
+#[doc = "IDAC"]
+pub struct CAPSENSE_IDAC2 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for CAPSENSE_IDAC2 {}
+impl CAPSENSE_IDAC2 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const cap_sense_idac2::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const cap_sense_idac2::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for CAPSENSE_IDAC2 {
+    type Target = cap_sense_idac2::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for CAPSENSE_IDAC2 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("CAPSENSE_IDAC2").finish()
+    }
+}
+#[doc = "IDAC"]
+pub mod cap_sense_idac2;
 #[doc = "DMAC Registers"]
 pub struct DMAC {
     _marker: PhantomData<*const ()>,
@@ -80,6 +220,174 @@ impl core::fmt::Debug for DMAC {
 #[doc = "DMAC Registers"]
 pub mod dmac;
 #[doc = "No description available"]
+pub struct TIMER {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for TIMER {}
+impl TIMER {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const timer::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const timer::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for TIMER {
+    type Target = timer::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for TIMER {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("TIMER").finish()
+    }
+}
+#[doc = "No description available"]
+pub mod timer;
+#[doc = "Serial Communication Block"]
+pub struct I2C {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for I2C {}
+impl I2C {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const i2c::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const i2c::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for I2C {
+    type Target = i2c::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for I2C {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("I2C").finish()
+    }
+}
+#[doc = "Serial Communication Block"]
+pub mod i2c;
+#[doc = "Serial Communication Block"]
+pub struct UART {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for UART {}
+impl UART {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const uart::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const uart::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for UART {
+    type Target = uart::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for UART {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("UART").finish()
+    }
+}
+#[doc = "Serial Communication Block"]
+pub mod uart;
+#[doc = "No description available"]
+pub struct PWM_2 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PWM_2 {}
+impl PWM_2 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const pwm_2::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const pwm_2::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PWM_2 {
+    type Target = pwm_2::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PWM_2 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PWM_2").finish()
+    }
+}
+#[doc = "No description available"]
+pub mod pwm_2;
+#[doc = "OpAmp"]
+pub struct ADC_3_BUFFER {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for ADC_3_BUFFER {}
+impl ADC_3_BUFFER {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const adc_3_buffer::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const adc_3_buffer::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for ADC_3_BUFFER {
+    type Target = adc_3_buffer::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for ADC_3_BUFFER {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("ADC_3_BUFFER").finish()
+    }
+}
+#[doc = "OpAmp"]
+pub mod adc_3_buffer;
+#[doc = "No description available"]
+pub struct PWM_0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PWM_0 {}
+impl PWM_0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const pwm_0::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const pwm_0::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PWM_0 {
+    type Target = pwm_0::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PWM_0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PWM_0").finish()
+    }
+}
+#[doc = "No description available"]
+pub mod pwm_0;
+#[doc = "No description available"]
 pub struct PWM_1 {
     _marker: PhantomData<*const ()>,
 }
@@ -107,15 +415,67 @@ impl core::fmt::Debug for PWM_1 {
 }
 #[doc = "No description available"]
 pub mod pwm_1;
+#[doc = "OpAmp"]
+pub struct ADC_2_BUFFER {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for ADC_2_BUFFER {}
+impl ADC_2_BUFFER {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const adc_2_buffer::RegisterBlock = 0 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const adc_2_buffer::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for ADC_2_BUFFER {
+    type Target = adc_2_buffer::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for ADC_2_BUFFER {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("ADC_2_BUFFER").finish()
+    }
+}
+#[doc = "OpAmp"]
+pub mod adc_2_buffer;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r"All the peripherals"]
 #[allow(non_snake_case)]
 pub struct Peripherals {
+    #[doc = "COMP_0"]
+    pub COMP_0: COMP_0,
+    #[doc = "ADC"]
+    pub ADC: ADC,
+    #[doc = "COMP_1"]
+    pub COMP_1: COMP_1,
+    #[doc = "CAPSENSE_IDAC1"]
+    pub CAPSENSE_IDAC1: CAPSENSE_IDAC1,
+    #[doc = "CAPSENSE_IDAC2"]
+    pub CAPSENSE_IDAC2: CAPSENSE_IDAC2,
     #[doc = "DMAC"]
     pub DMAC: DMAC,
+    #[doc = "TIMER"]
+    pub TIMER: TIMER,
+    #[doc = "I2C"]
+    pub I2C: I2C,
+    #[doc = "UART"]
+    pub UART: UART,
+    #[doc = "PWM_2"]
+    pub PWM_2: PWM_2,
+    #[doc = "ADC_3_BUFFER"]
+    pub ADC_3_BUFFER: ADC_3_BUFFER,
+    #[doc = "PWM_0"]
+    pub PWM_0: PWM_0,
     #[doc = "PWM_1"]
     pub PWM_1: PWM_1,
+    #[doc = "ADC_2_BUFFER"]
+    pub ADC_2_BUFFER: ADC_2_BUFFER,
 }
 impl Peripherals {
     #[doc = r"Returns all the peripherals *once*"]
@@ -134,10 +494,46 @@ impl Peripherals {
     pub unsafe fn steal() -> Self {
         DEVICE_PERIPHERALS = true;
         Peripherals {
+            COMP_0: COMP_0 {
+                _marker: PhantomData,
+            },
+            ADC: ADC {
+                _marker: PhantomData,
+            },
+            COMP_1: COMP_1 {
+                _marker: PhantomData,
+            },
+            CAPSENSE_IDAC1: CAPSENSE_IDAC1 {
+                _marker: PhantomData,
+            },
+            CAPSENSE_IDAC2: CAPSENSE_IDAC2 {
+                _marker: PhantomData,
+            },
             DMAC: DMAC {
                 _marker: PhantomData,
             },
+            TIMER: TIMER {
+                _marker: PhantomData,
+            },
+            I2C: I2C {
+                _marker: PhantomData,
+            },
+            UART: UART {
+                _marker: PhantomData,
+            },
+            PWM_2: PWM_2 {
+                _marker: PhantomData,
+            },
+            ADC_3_BUFFER: ADC_3_BUFFER {
+                _marker: PhantomData,
+            },
+            PWM_0: PWM_0 {
+                _marker: PhantomData,
+            },
             PWM_1: PWM_1 {
+                _marker: PhantomData,
+            },
+            ADC_2_BUFFER: ADC_2_BUFFER {
                 _marker: PhantomData,
             },
         }
