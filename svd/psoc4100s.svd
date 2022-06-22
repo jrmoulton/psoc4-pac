@@ -4103,7 +4103,30 @@ Note: This field takes considerable time (up to 3 LFCLK cycles) to take effect. 
           <fields>
             <field>
               <name>OVS</name>
-              <description>N/A</description>
+              <description>Serial interface bit period oversampling factor expressed in lP clock cycles. Used for SPI and UART functionality. OVS + 1 IP clock cycles constitute a single serial interface clock/bit cycle. The IP clock is provided by the programmable clock IP. This field is NOT used in externally clocked mode. If OVS is odd, the oversampling factor is even and the first and second phase of the interface clock period are the same. If OVS is even, the oversampling factor is odd and the first phase of the interface clock period is 1 peripheral clock cycle longer than the second phase of the interface clock period.
+In SPI master mode, the valid range is [3, 15]. At an IP frequency of 48 MHz, the maximum IP bit rate is 12 Mbps. The effective system bit rate is dependent on the external SPI slave that we communicate with. If the SPI output clock "spi_clk_out" to SPI MISO input "spi_miso_in" round trip delay is introducing significant delays (multiple "spi_clk_out" cycles), it may be necessary to increase OVS and/or to set SPI_CTRL.LATE_MISO_SAMPLE to '1' to achieve the maximum possible system bit rate. The max- imum IP bit rate of 12 Mbps provides an IP centric perspective, assuming ideal (0 ns) IO cell and routing (chip and board) delay. The required IP clock/IF clock ratio increases and the calculated maximum bit rate decreases, when realistic chip and routing delays are taken into account.
+In SPI slave mode, the OVS field is NOT used. However, there is a frequency requirement for the IP clock wrt. the interface (IF) clock to guarantee functional correct behavior. This requirement is expressed as a ratio: IP clock/IF clock. The ratio is dependent on the setting of RX_CTRL.MEDIAN and the external SPI master's capability to support "late MISO sample" functionality (similar to our SPI master functionality represented by SPI_CTRL.LATE_MISO_SAMPLE):
+- MEDIAN is '0' and external SPI master has NO "late MISO sample functionality": IP clock/IF clock >= 6. At a IP frequency of 48 MHz, the maximum bit rate is 8 Mbps.
+- MEDIAN is '0' and external SPI master has "late MISO sample functionality": IP clock/IF clock >= 3. At a IP frequency of 48 MHz, the maximum bit rate is 16 Mbps.
+- MEDIAN is '1' and external SPI master has NO "late MISO sample functionality": IP clock/IF clock >= 8. At a IP frequency of 48 MHz, the maximum bit rate is 6 Mbps.
+- MEDIAN is '1' and external SPI master has "late MISO sample functionality": IP clock/IF clock >= 4. At a IP frequency of 48 MHz, the maximum bit rate is 12 Mbps.
+The maximum bit rates provide an IP centric perspective, assuming ideal (0 ns) IO cell and routing (chip and board) delay. The required IP clock/IF clock ratio increases and the calculated maximum bit rate decreases, when realistic chip and routing delays are taken into account.
+In UART standard submode (including LIN), the valid range is [7, 15]. In UART SmartCard submode, the valid range is [7, 15].
+In UART TX IrDA submode this field indirectly specifies the oversampling. The oversampling determines the interface clock/bit cycle and the width of the pulse. Only normal transmission mode is supported, the pulse is roughly 3/16 of the bit period (for all bit rates). There is only one valid OVS value:
+- 0: 16 times oversampling.
+IP clock frequency of 16*115.2 KHz for 115.2 Kbps. IP clock frequency of 16*57.6 KHz for 57.6 Kbps. IP clock frequency of 16*38.4 KHz for 38.4 Kbps. IP clock frequency of 16*19.2 KHz for 19.2 Kbps. IP clock frequency of 16*9.6 KHz for 9.6 Kbps.
+IP clock frequency of 16*2.4 KHz for 2.4 Kbps. IP clock frequency of 16*1.2 KHz for 1.2 Kbps. - all other values are not used in normal mode.
+In UART RX IrDA submode (1.2, 2.4, 9.6, 19.2, 38.4, 57.6 and 115.2 Kbps) this field indirectly specifies the oversampling. The oversampling determines the interface clock/bit cycle and the width of the pulse. In normal transmission mode, this pulse is roughly 3/16 of the bit period (for all bit rates). In low power transmission mode, this pulse is potentially smaller (down to 1.62 us typical and 1.41 us minimal) than 3/16 of the bit period (for less than 115.2 Kbps bitrates). Pulse widths greater or equal than two IP clock cycles are guaranteed to be detected by the receiver. Pulse widths less than two IP clock cycles and greater or equal than one IP clock cycle may be detected by the receiver. Pulse widths less than one IP clock cycle will not be detected by the receiver. RX_CTRL.MEDIAN should be set to '1' for IrDA receiver functionality. The IP clock (as provided by the programmable clock IP) and the oversampling together determine the IrDA bitrate. Normal mode, OVS field values (with the required IP clock frequency): - 0: 16 times oversampling.
+IP clock frequency of 16*115.2 KHz for 115.2 Kbps. IP clock frequency of 16*57.6 KHz for 57.6 Kbps. IP clock frequency of 16*38.4 KHz for 38.4 Kbps. IP clock frequency of 16*19.2 KHz for 19.2 Kbps. IP clock frequency of 16*9.6 KHz for 9.6 Kbps.
+IP clock frequency of 16*2.4 KHz for 2.4 Kbps. IP clock frequency of 16*1.2 KHz for 1.2 Kbps. - all other values are not used in normal mode.
+Low power mode, OVS field values (with the required IP clock frequency): - 0: 16 times oversampling.
+IP clock frequency of 16*115.2 KHz for 115.2 Kbps. - 1: 32 times oversampling.
+IP clock frequency of 32*57.6 KHz for 57.6 Kbps. - 2: 48 times oversampling.
+IP clock frequency of 48*38.4 KHz for 38.4 Kbps. - 3: 96 times oversampling.
+IP clock frequency of 96*19.2 KHz for 19.2 Kbps. - 4: 192 times oversampling.
+IP clock frequency of 192*9.6 KHz for 9.6 Kbps. - 5: 768 times oversampling.
+IP clock frequency of 768*2.4 KHz for 2.4 Kbps. - 6: 1536 times oversampling.
+IP clock frequency of 1536*1.2 KHz for 1.2 Kbps. - all other values are not used in low power mode. Default Value: 15</description>
               <bitRange>[3:0]</bitRange>
               <access>read-write</access>
             </field>
@@ -4165,7 +4188,13 @@ In multi-processor UART receiver mode, this field is used to allow the receiver 
             </field>
             <field>
               <name>MODE</name>
-              <description>N/A</description>
+              <description>Mode of operation (3: Reserved) Default Value: 3
+
+          0x0: I2C : Inter-Integrated Circuits (I2C) mode.
+0x1: SPI :
+Serial Peripheral Interface (SPI) mode.
+0x2: UART :
+Universal Asynchronous Receiver/Transmitter (UART) mode.</description>
               <bitRange>[25:24]</bitRange>
               <access>read-write</access>
               <enumeratedValues>
